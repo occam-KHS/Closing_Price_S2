@@ -6,7 +6,8 @@ import datetime
 def select_stocks(today_dt):
     
     today = datetime.datetime.strptime(today_dt, '%Y-%m-%d')
-    start_dt = today - datetime.timedelta(days=270) # 100 일전 데이터 부터 시작 - 피쳐 엔지니어링은 최소 60 개의 일봉이 필요함
+    start_dt = today - datetime.timedelta(days=365) # 100 일전 데이터 부터 시작 - 피쳐 엔지니어링은 최소 60 개의 일봉이 필요함
+    start_dt = start_dt.strftime('%Y-%m-%d')
     print(start_dt, today_dt)
 
     kosdaq_list = pd.read_pickle('kosdaq_list.pkl')
