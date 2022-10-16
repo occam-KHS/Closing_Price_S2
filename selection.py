@@ -6,7 +6,7 @@ import datetime
 def select_stocks(today_dt):
     
     today = datetime.datetime.strptime(today_dt, '%Y-%m-%d')
-    start_dt = today - datetime.timedelta(days=365) # 100 일전 데이터 부터 시작 - 피쳐 엔지니어링은 최소 60 개의 일봉이 필요함
+    start_dt = today - datetime.timedelta(days=365)
     start_dt = start_dt.strftime('%Y-%m-%d')
     print(start_dt, today_dt)
 
@@ -30,7 +30,7 @@ def select_stocks(today_dt):
         c2 = (today_close > highest).astype('int')
         c3 = (today_vol > prev_vol * 3.5).astype('int')
         c4 = (today_open < today_close).astype('int')
-        c5 = ((today_high / today_close) < 1.01).astype('int')
+        c5 = ((today_high / today_close) < 1.005).astype('int')
 
         if c1 & c2 & c3 & c4 & c5:
             print(code)
