@@ -30,7 +30,7 @@ def select_stocks(today_dt):
         c2 = (today_close > highest).astype('int')
         c3 = (today_vol > prev_vol * 3.5).astype('int')
         c4 = (today_open < today_close).astype('int')
-        c5 = ((today_high / today_close) < 1.02).astype('int')
+        c5 = ((today_high / today_close) < 1.01).astype('int')
 
         if c1 & c2 & c3 & c4 & c5:
             print(code)
