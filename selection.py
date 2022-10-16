@@ -25,7 +25,7 @@ def select_stocks(today_dt):
         if daily_price.index[-1].strftime('%Y-%m-%d') != today_dt:
             continue
 
-        c1 = (today_vol > 0).astype('int')
+        c1 = (prev_vol>0)*(today_vol > 0).astype('int')
         c2 = (today_close > highest).astype('int')
         c3 = (today_vol > prev_vol * 3).astype('int')
         c4 = (today_open < today_close).astype('int')

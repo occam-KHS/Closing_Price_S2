@@ -337,7 +337,11 @@ def auto_trading():  # 매수 희망 종목 리스트
                 for sym, qty_rt in balance_dict.items():  # qty_rt / [0]: qty(보유수량), [1]: rt(평가수익율)
 
                     print(f'{sym} 현재 수익율: {float(qty_rt[1]): 5.2f}')
-                    if float(qty_rt[1]) > 5.0 or float(qty_rt[1]) < -5.0:  # 익절 라인은 dynamic 하게 바꿀 수 있다 (단위 %)
+
+                    if float(qty_rt[1]) > 5.0:  # 익절 라인은 dynamic 하게 바꿀 수 있다 (단위 %)
+                        sell(sym, qty_rt[0])
+
+                    if  float(qty_rt[1]) < -5.0:
                         sell(sym, qty_rt[0])
 
                 time.sleep(1)
