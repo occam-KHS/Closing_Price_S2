@@ -3,14 +3,14 @@ import pandas as pd
 import numpy as np
 import datetime
 
+kosdaq_list = pd.read_pickle('kosdaq_list.pkl')
+
 def select_stocks(today_dt):
     
     today = datetime.datetime.strptime(today_dt, '%Y-%m-%d')
     start_dt = today - datetime.timedelta(days=365)
     start_dt = start_dt.strftime('%Y-%m-%d')
     print(start_dt, today_dt)
-
-    kosdaq_list = pd.read_pickle('kosdaq_list.pkl')
 
     code_list = []
 
@@ -23,7 +23,7 @@ def select_stocks(today_dt):
         today_vol = daily_price['Volume'][-1]
         prev_vol = daily_price['Volume'][-2]
 
-        if daily_price.index[-1].strftime('%Y-%m-%d') != today_dt:
+        if (daily_price.index[-1].strftime('%Y-%m-%d') != today_dt)  or ('스팩' in name):
             continue
 
         c1 = (prev_vol>0)*(today_vol > 0).astype('int')
