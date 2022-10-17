@@ -341,7 +341,7 @@ def auto_trading():  # 매수 희망 종목 리스트
                     if float(qty_rt[1]) > 5.0:  # 익절 라인은 dynamic 하게 바꿀 수 있다 (단위 %)
                         sell(sym, qty_rt[0])
 
-                    if  float(qty_rt[1]) < -5.0:
+                    if float(qty_rt[1]) < -5.0:
                         sell(sym, qty_rt[0])
 
                 time.sleep(1)
