@@ -265,7 +265,7 @@ def auto_trading():  # 매수 희망 종목 리스트
 
             t_now = datetime.datetime.now()
             t_9 = t_now.replace(hour=9, minute=0, second=0, microsecond=0)
-            t_start = t_now.replace(hour=15, minute=14, second=0, microsecond=0)
+            t_start = t_now.replace(hour=9, minute=1, second=0, microsecond=0)
             t_sell = t_now.replace(hour=15, minute=19, second=0, microsecond=0)
             t_exit = t_now.replace(hour=15, minute=20, second=0, microsecond=0)
             today = datetime.datetime.today().weekday()
@@ -285,7 +285,7 @@ def auto_trading():  # 매수 희망 종목 리스트
                     symbol_list = select_tops
                     print(symbol_list)
 
-                    flag = 1
+                    # flag = 1
                     bought_list = []  # 매수 완료된 종목 리스트
                     total_cash = get_balance()  # 보유 현금 조회
                     stock_dict = get_stock_balance()  # 보유 주식 조회
@@ -338,7 +338,7 @@ def auto_trading():  # 매수 희망 종목 리스트
 
                     print(f'{sym} 현재 수익율: {float(qty_rt[1]): 5.2f}')
 
-                    if float(qty_rt[1]) > 5.0:  # 익절 라인은 dynamic 하게 바꿀 수 있다 (단위 %)
+                    if float(qty_rt[1]) > 1.0:  # 익절 라인은 dynamic 하게 바꿀 수 있다 (단위 %)
                         sell(sym, qty_rt[0])
 
                     if float(qty_rt[1]) < -5.0:
